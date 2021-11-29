@@ -21,20 +21,17 @@ from text import Script
     result += f'{seconds}s'
     return result '''
 
-@Client.on_message(filters.command(["start"]) & filters.private)
-async def start(client, message):
-    await update.reply_text(
-        text=Script.START_TEXT.format(update.from_user.mention),
-        disable_web_page_preview=True,
-        reply_markup=Script.START_BUTTONS
-      )
+@Client.on_message(filters.command(["start"])
 async def start(client, message):
     bot_uptime = time.strftime("%Hh %Mm %Ss", time.gmtime(time.time() - bot_start_time)) 
-    joinButton = InlineKeyboardMarkup([
-        [InlineKeyboardButton("JOIN", url="https://t.me/TGBotsCollection")],
-        [InlineKeyboardButton(
-            "Try", url="https://t.me/TGBotsCollectionbot")]
-    ])
+    joinButton = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('🤖 Update Channel', url='https://telegram.me/tellybots_4u'),
+        InlineKeyboardButton('💬 Support Group', url='https://telegram.me/tellybots_support')
+        ],[
+        InlineKeyboardButton('❔ Help', callback_data='help'),
+        InlineKeyboardButton('⛔ Close', callback_data='close')
+        ]]
     welcomed = f"<b>--Server Details--</b>\n<b>CPU:</b> {psutil.cpu_percent()}%\n<b>RAM:</b> {psutil.virtual_memory().percent}%\n<b>DISK:</b> {psutil.disk_usage('/').percent}%\n\n <b><i>Bot Uptime :</i></b> {bot_uptime}"
     await message.reply_text(welcomed, reply_markup=joinButton)
     raise StopPropagation
