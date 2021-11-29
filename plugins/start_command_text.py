@@ -21,9 +21,9 @@ from text import Script
     result += f'{seconds}s'
     return result '''
 
-@Client.on_message(filters.command(["start"])
+@Client.on_message(filters.command(["start"]), group=-2)
 async def start(client, message):
-    bot_uptime = time.strftime("%Hh %Mm %Ss", time.gmtime(time.time() - bot_start_time)) 
+    bot_uptime = time.strftime("%Hh %Mm %Ss", time.gmtime(time.time() - bot_start_time))
     joinButton = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton('🤖 Update Channel', url='https://telegram.me/tellybots_4u'),
