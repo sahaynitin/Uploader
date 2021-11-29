@@ -28,3 +28,13 @@ async def start(client, message):
         disable_web_page_preview=True,
         reply_markup=Script.START_BUTTONS
       )
+async def start(client, message):
+    bot_uptime = time.strftime("%Hh %Mm %Ss", time.gmtime(time.time() - bot_start_time)) 
+    joinButton = InlineKeyboardMarkup([
+        [InlineKeyboardButton("JOIN", url="https://t.me/TGBotsCollection")],
+        [InlineKeyboardButton(
+            "Try", url="https://t.me/TGBotsCollectionbot")]
+    ])
+    welcomed = f"<b>--Server Details--</b>\n<b>CPU:</b> {psutil.cpu_percent()}%\n<b>RAM:</b> {psutil.virtual_memory().percent}%\n<b>DISK:</b> {psutil.disk_usage('/').percent}%\n\n <b><i>Bot Uptime :</i></b> {bot_uptime}"
+    await message.reply_text(welcomed, reply_markup=joinButton)
+    raise StopPropagation
