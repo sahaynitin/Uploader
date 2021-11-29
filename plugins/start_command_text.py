@@ -2,7 +2,7 @@ from pyrogram import Client, filters, StopPropagation
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 import time
 bot_start_time = time.time()
-from text import Script 
+from text import Script
 ''' def get_readable_time(seconds: int) -> str:
     result = ''
     (days, remainder) = divmod(seconds, 86400)
@@ -24,7 +24,7 @@ from text import Script
 @Client.on_message(filters.command(["start"]) & filters.private)
 async def start(bot, update):
     await update.reply_text(
-        text=Text.START_TEXT.format(update.from_user.mention),
+        text=Script.START_TEXT.format(update.from_user.mention),
         disable_web_page_preview=True,
-        reply_markup=Text.START_BUTTONS
+        reply_markup=Script.START_BUTTONS
       )
