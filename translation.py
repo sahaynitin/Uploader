@@ -1,10 +1,10 @@
 class Translation(object):
-    START_TEXT = """Hello <b>{message.from_user.first_name}</b>,
-This is a Telegram Multipurpose Bot Which can do many functions.
+    START_TEXT = """<b>Hello <b>{message.from_user.first_name}</b>\n
+I am Fastest Anydl_X Bot
 
 /help for more details..
 
-JOIN : https://t.me/TGBotsCollection \nFor the List of Telegram Bots
+Made With 💕 By @Tellybots_4u
 """
     IFLONG_FILE_NAME = " Only 64 characters can be named . "
     RENAME_403_ERR = "Sorry. You are not permitted to rename this file."
@@ -48,9 +48,7 @@ Telegram ID : <code>{}</code>
    SVideo - Give File as video with Screenshots
    DFile  - Give File with Screenshots
    Video  - Give File as video without Screenshots
-   DFile  - Give File without Screenshots
-
-JOIN : https://t.me/TGBotsCollection \n For the List of Telegram Bots"""
+   DFile  - Give File without Screenshots"""
     REPLY_TO_DOC_GET_LINK = "Reply to a Telegram media to get High Speed Direct Download Link"
     REPLY_TO_DOC_FOR_C2V = "Reply to a Telegram media to convert"
     REPLY_TO_DOC_FOR_SCSS = "Reply to a Telegram media to get screenshots"
