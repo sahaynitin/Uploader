@@ -2,7 +2,7 @@ from pyrogram import Client, filters, StopPropagation
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 import time
 bot_start_time = time.time()
-    
+from text import Script 
 ''' def get_readable_time(seconds: int) -> str:
     result = ''
     (days, remainder) = divmod(seconds, 86400)
