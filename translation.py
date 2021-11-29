@@ -2,7 +2,7 @@ class Translation(object):
     START_TEXT = """<b>Hello <b>{message.from_user.first_name}</b>\n
 I am Fastest Anydl_X Bot
 
-/help for more details..
+Use Help Command To Know How To Use Me.
 
 Made With 💕 By @Tellybots_4u
 """
