@@ -39,7 +39,7 @@ async def save_photo(bot, update):
 async def delthumbnail(bot, update):
     await AddUser(bot, update)
     await tellybots.set_thumbnail(update.from_user.id, thumbnail=None)
-    await bot.send_message(chat_id=update.chat.id, text=Translation.DELE_TED_CUSTOM_THUMB_NAIL, reply_to_message_id=update.message_id)
+    await bot.send_message(chat_id=update.chat.id, text=Translation.DEL_ETED_CUSTOM_THUMB_NAIL, reply_to_message_id=update.message_id)
 
 @Clinton.on_message(filters.private & filters.command("viewthumbnail") )
 async def viewthumbnail(bot, update):
