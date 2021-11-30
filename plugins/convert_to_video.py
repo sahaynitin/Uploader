@@ -19,8 +19,7 @@ else:
 
 # the Strings used for this "thing"
 from translation import Translation
-
-import pyrogram
+from pyrogram import filters
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 from database.adduser import AddUser
 from pyrogram import Client as Tellybots
