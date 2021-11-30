@@ -1,6 +1,6 @@
 from pyrogram import Client, filters, StopPropagation
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-import time,from text import Script
+import time
 bot_start_time = time.time()
 
 ''' def get_readable_time(seconds: int) -> str:
@@ -20,21 +20,21 @@ bot_start_time = time.time()
     seconds = int(seconds)
     result += f'{seconds}s'
     return result '''
-
-
+from text import Script
+from sample_config import Config
 @Client.on_message(filters.command('start') & filters.private & ~filters.edited)
 async def start(b, m):
     if not await db.is_user_exist(m.from_user.id):
         await db.add_user(m.from_user.id)
         await b.send_message(
-            Var.BIN_CHANNEL,
+            Config.BIN_CHANNEL,
             f"**Nᴇᴡ Usᴇʀ Jᴏɪɴᴇᴅ:** \n\nMy New Freind [{m.from_user.first_name}](tg://user?id={m.from_user.id}) Started Your Bot!!"
         )
     usr_cmd = m.text.split("_")[-1]
     if usr_cmd == "/start":
         if Var.UPDATES_CHANNEL != "None":
             try:
-                user = await b.get_chat_member(Var.UPDATES_CHANNEL, m.chat.id)
+                user = await b.get_chat_member(Config.UPDATES_CHANNEL, m.chat.id)
                 if user.status == "kicked":
                     await b.send_message(
                         chat_id=m.chat.id,
@@ -71,7 +71,7 @@ async def start(b, m):
                                                                                        
                                                                             
     else:
-        if Var.UPDATES_CHANNEL != "None":
+        if Config.UPDATES_CHANNEL != "None":
             try:
                 user = await b.get_chat_member(Var.UPDATES_CHANNEL, m.chat.id)
                 if user.status == "kicked":
