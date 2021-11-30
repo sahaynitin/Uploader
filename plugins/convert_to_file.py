@@ -32,8 +32,9 @@ from hachoir.parser import createParser
 from PIL import Image
 
 
-@pyrogram.Client.on_message(pyrogram.filters.command(["c2f"]))
+@pyrogram.Client.on_message(pyrogram.filters.command(["c2a"]))
 async def convert_to_audio(bot, update):
+    await AddUser(bot, update)
     if (update.reply_to_message is not None) and (update.reply_to_message.media is not None) :
         download_location = Config.DOWNLOAD_LOCATION + "/" + ran + "/"
         a = await bot.send_message(
