@@ -31,6 +31,9 @@ from database.access import tellybots
 from PIL import Image
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from helper_funcs.help_Nekmo_ffmpeg import generate_screen_shots
+from hachoir.parser import createParser
+from hachoir.metadata import extractMetadata
+
 
 async def youtube_dl_call_back(bot, update):
     cb_data = update.data
