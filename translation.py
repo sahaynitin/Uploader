@@ -139,4 +139,4 @@ Free users only 1 request per 30 minutes.
     REPLY_TO_DOC_FOR_C2A = "<b> Please Reply To An File/video With /c2a To Convert It Into Audio File</b>"
     CUSTOM_CAPTION_UL_FILE = " "
     USER_ADDED_TO_DB = "User <a href='tg://user?id={}'>{}</a> added to {} till {}."
-CHECKING_LINK = "<code>Analysing Your Link</code>⏳"
+    CHECKING_LINK = "<code>Analysing Your Link</code>⏳"
