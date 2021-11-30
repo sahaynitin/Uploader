@@ -1,9 +1,13 @@
 import logging
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
+
+from database.access import clinton
+from hachoir.metadata import extractMetadata
+from hachoir.parser import createParser
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
+from database.adduser import AddUser
 import os
 import pyrogram
 
