@@ -29,7 +29,7 @@ from helper_funcs.display_progress import progress_for_pyrogram, humanbytes
 # https://stackoverflow.com/a/37631799/4723940
 from database.access import tellybots
 from PIL import Image
-
+from helper_funcs.help_Nekmo_ffmpeg import generate_screen_shots
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from PIL import Image
 
