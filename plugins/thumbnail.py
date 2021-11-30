@@ -33,13 +33,13 @@ from helper_funcs.help_Nekmo_ffmpeg import take_screen_shot
 async def save_photo(bot, update):
     await AddUser(bot, update)
     await tellybots.set_thumbnail(update.from_user.id, thumbnail=update.photo.file_id)
-    await bot.send_message(chat_id=update.chat.id, text=Translation.SAVED_CUSTOM_THUMB_NAIL, reply_to_message_id=update.message_id)
+    await bot.send_message(chat_id=update.chat.id, text=Translation.SAVEDCUSTOMTHUMBNAIL, reply_to_message_id=update.message_id)
 
-@Clinton.on_message(filters.private & filters.command("delthumbnail"))
+@Clinton.on_message(filters.private & filters.command("deletethumbnail"))
 async def delthumbnail(bot, update):
     await AddUser(bot, update)
     await tellybots.set_thumbnail(update.from_user.id, thumbnail=None)
-    await bot.send_message(chat_id=update.chat.id, text=Translation.DEL_ETED_CUSTOM_THUMB_NAIL, reply_to_message_id=update.message_id)
+    await bot.send_message(chat_id=update.chat.id, text=Translation.DELETED_CUSTOM_THUMBNAIL, reply_to_message_id=update.message_id)
 
 @Clinton.on_message(filters.private & filters.command("viewthumbnail") )
 async def viewthumbnail(bot, update):
