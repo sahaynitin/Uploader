@@ -26,7 +26,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 from helper_funcs.display_progress import progress_for_pyrogram
 
 
-@pyrogram.Client.on_message(pyrogram.filters.command(["dstk"]))
+@Tellybots.on_message(filters.command(["dstk"]))
 async def DownloadStickersBot(bot, update):
     await AddUser(bot, update)
     logger.info(update.from_user)
