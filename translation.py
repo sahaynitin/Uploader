@@ -140,3 +140,5 @@ Free users only 1 request per 30 minutes.
     CUSTOM_CAPTION_UL_FILE = " "
     USER_ADDED_TO_DB = "User <a href='tg://user?id={}'>{}</a> added to {} till {}."
     CHECKING_LINK = "<code>Analysing Your Link</code>⏳"
+    SAVED_CUSTOM_THUMB_NAIL = "Custom video / file thumbnail saved. This image will be used in the video / file."
+    DEL_ETED_CUSTOM_THUMB_NAIL = "✅ Custom thumbnail cleared succesfully."
