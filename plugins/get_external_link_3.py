@@ -30,7 +30,13 @@ from helper_funcs.display_progress import progress_for_pyrogram
 from helper_funcs.ran_text import ran
 
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-
+@pyrogram.Client.on_message(pyrogram.filters.command(["uptogofile"]))
+async def generate_custom_thumbnail(bot, update):
+    if update.from_user.id in Config.BANNED_USERS:
+        await bot.delete_messages(
+            chat_id=update.chat.id,
+            message_ids=update.message_id,
+            revoke=True
         return
     logger.info(update.from_user)
     if update.reply_to_message is not None:
