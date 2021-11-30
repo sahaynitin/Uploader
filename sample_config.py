@@ -76,3 +76,19 @@ class Config(object):
     # Array to store users who are authorized to use the bot
     # database uri (mongodb)
     MONGODB_URL = os.environ.get("MONGODB_URL", "")
+    # Generate screenshots for file after uploading
+    # Defaults to True
+    SCREENSHOTS = os.environ.get("SCREENSHOTS", "True")
+
+    # default thumbnail to be used in the videos
+    DEF_THUMB_NAIL_VID_S = os.environ.get("DEF_THUMB_NAIL_VID_S", "https://placehold.it/90x90")
+
+    # proxy for accessing youtube-dl in GeoRestricted Areas
+    # Get your own proxy from https://github.com/rg3/youtube-dl/issues/1091#issuecomment-230163061
+    HTTP_PROXY = os.environ.get("HTTP_PROXY", "")
+    
+    # Update channel for Force Subscribe
+    UPDATE_CHANNEL = os.environ.get("UPDATE_CHANNEL", "")
+    
+    # Log channel for banning spammers
+    LOG_CHANNEL = os.environ.get("LOG_CHANNEL", "")
