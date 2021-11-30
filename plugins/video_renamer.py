@@ -18,7 +18,7 @@ else:
     from config import Config
 
 # the Strings used for this "thing"
-from translation import Translation
+from script import Script
 
 import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
@@ -113,7 +113,7 @@ async def rename_doc(bot, update):
            pass 
         a = await bot.send_message(
             chat_id=update.chat.id,
-            text=Translation.DOWNLOAD_START,
+            text=Script.DOWNLOAD_START,
             reply_to_message_id=update.message_id
         )
         c_time = time.time()
@@ -122,7 +122,7 @@ async def rename_doc(bot, update):
             file_name=download_location,
             progress=progress_for_pyrogram,
             progress_args=(
-                Translation.DOWNLOAD_START,
+                Script.DOWNLOAD_START,
                 a,
                 c_time
             )
