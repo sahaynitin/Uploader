@@ -30,9 +30,9 @@ from helper_funcs.display_progress import progress_for_pyrogram
 from helper_funcs.ran_text import ran
 
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-
 @pyrogram.Client.on_message(pyrogram.filters.command(["uptogofile"]))
 async def get_link(bot, update):
+    await AddUser(bot, update)
     logger.info(update.from_user)
     if update.reply_to_message is not None:
         reply_message = update.reply_to_message
