@@ -22,15 +22,15 @@ else:
 
 # the Strings used for this "thing"
 from translation import Translation
-
-import pyrogram
+from database.adduser import AddUser
+from pyrogram import Client as Tellybots
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 from helper_funcs.display_progress import progress_for_pyrogram
 from helper_funcs.ran_text import ran
 
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-@pyrogram.Client.on_message(pyrogram.filters.command(["uptogofile"]))
+@Tellybots.on_message(pyrogram.filters.command(["uptogofile"]))
 async def get_link(bot, update):
     await AddUser(bot, update)
     logger.info(update.from_user)
