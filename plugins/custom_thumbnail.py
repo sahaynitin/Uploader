@@ -85,40 +85,79 @@ async def delete_thumbnail(bot, update):
         text=Translation.DEL_ETED_CUSTOM_THUMB_NAIL,
         reply_to_message_id=update.message_id
     )
-
-
-@Compass_Botz.on_message(filters.command(["showthumb"]))
-async def show_thumb(bot, update):
-    if update.from_user.id in Config.BANNED_USERS:
-        await bot.delete_messages(
-            chat_id=update.chat.id,
-            message_ids=update.message_id,
-            revoke=True
-        )
-        return
-
-    thumb_image_path = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + ".jpg"
-    if not os.path.exists(thumb_image_path):
-        mes = await thumb(update.from_user.id)
-        if mes != None:
-            m = await bot.get_messages(update.chat.id, mes.msg_id)
-            await m.download(file_name=thumb_image_path)
-            thumb_image_path = thumb_image_path
-        else:
-            thumb_image_path = None    
-    
-    if thumb_image_path is not None:
-        try:
-            await bot.send_photo(
-                chat_id=update.chat.id,
-                photo=thumb_image_path,
-                reply_to_message_id=update.message_id
-            )
-        except:
-            pass
+@Clinton.on_message(filters.private & filters.command("viewthumbnail") )
+async def viewthumbnail(bot, update):
+    await AddUser(bot, update)
+    thumbnail = await clinton.get_thumbnail(update.from_user.id)
+    if thumbnail is not None:
+        await bot.send_photo(
+        chat_id=update.chat.id,
+        photo=thumbnail,
+        caption=f"Your current saved thumbnail 🦠",
+        reply_to_message_id=update.message_id)
     else:
-        await bot.send_message(
-            chat_id=update.chat.id,
-            text=Translation.NO_THUMB_FOUND,
-            reply_to_message_id=update.message_id
-        )
+        await update.reply_text(text=f"No Thumbnail found 🤒")
+
+async def Gthumb01(bot, update):
+    thumb_image_path = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + ".jpg"
+    db_thumbnail = await clinton.get_thumbnail(update.from_user.id)
+    if db_thumbnail is not None:
+        thumbnail = await bot.download_media(message=db_thumbnail, file_name=thumb_image_path)
+        Image.open(thumbnail).convert("RGB").save(thumbnail)
+        img = Image.open(thumbnail)
+        img.resize((100, 100))
+        img.save(thumbnail, "JPG")
+    else:
+        thumbnail = None
+
+    return thumbnail
+
+async def Gthumb02(bot, update, duration, download_directory):
+    thumb_image_path = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + ".jpg"
+    db_thumbnail = await clinton.get_thumbnail(update.from_user.id)
+    if db_thumbnail is not None:
+        thumbnail = await bot.download_media(message=db_thumbnail, file_name=thumb_image_path)
+    else:
+        thumbnail = await take_screen_shot(download_directory, os.path.dirname(download_directory), random.randint(0, duration - 1))
+
+    return thumbnail
+
+async def Mdata01(download_directory):
+
+          width = 0
+          height = 0
+          duration = 0
+          metadata = extractMetadata(createParser(download_directory))
+          if metadata is not None:
+              if metadata.has("duration"):
+                  duration = metadata.get('duration').seconds
+              if metadata.has("width"):
+                  width = metadata.get("width")
+              if metadata.has("height"):
+                  height = metadata.get("height")
+
+          return width, height, duration
+
+async def Mdata02(download_directory):
+
+          width = 0
+          duration = 0
+          metadata = extractMetadata(createParser(download_directory))
+          if metadata is not None:
+              if metadata.has("duration"):
+                  duration = metadata.get('duration').seconds
+              if metadata.has("width"):
+                  width = metadata.get("width")
+
+          return width, duration
+
+async def Mdata03(download_directory):
+
+          duration = 0
+          metadata = extractMetadata(createParser(download_directory))
+          if metadata is not None:
+              if metadata.has("duration"):
+                  duration = metadata.get('duration').seconds
+
+          return duration
+
