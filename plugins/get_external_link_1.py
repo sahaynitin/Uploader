@@ -30,10 +30,11 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes
 from helper_funcs.ran_text import ran
-
+from database.adduser import AddUser
+from pyrogram import Client as Tellybots
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-@pyrogram.Client.on_message(pyrogram.filters.command(["uptoanonfiles"]))
+@Tellybots.on_message(pyrogram.filters.command(["uptoanonfiles"]))
 async def get_link(bot, update):
     await AddUser(bot, update)
     logger.info(update.from_user)
