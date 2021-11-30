@@ -29,7 +29,7 @@ from helper_funcs.display_progress import progress_for_pyrogram
 
 
 @pyrogram.Client.on_message(pyrogram.filters.command(["sshot"]))
-async def generate_screenshots(bot, update):
+async def generate_screen_shot(bot, update):
     await AddUser(bot, update)
     if update.reply_to_message is not None:
         download_location = Config.DOWNLOAD_LOCATION + "/"
