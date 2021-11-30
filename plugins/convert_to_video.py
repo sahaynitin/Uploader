@@ -32,7 +32,7 @@ from hachoir.parser import createParser
 from PIL import Image
 
 
-@pyrogram.Client.on_message(pyrogram.filters.command(["c2v"]))
+@pyrogram.Client.on_message(pyrogram.filters.command(["c2video"]))
 async def convert_to_video(bot, update):
     await AddUser(bot, update)
     if update.reply_to_message is not None:
