@@ -23,7 +23,7 @@ from scripts import Scripted
 
 from pyrogram import Client as Tellybots
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-
+from database.db import *
 
 @Tellybots.on_message(filters.photo)
 async def save_photo(bot, update):
