@@ -13,7 +13,7 @@ import os
 import requests
 import subprocess
 import time
-
+from pyrogram import filters
 # the secret configuration specific things
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
@@ -23,7 +23,6 @@ else:
 # the Strings used for this "thing"
 from translation import Translation
 
-import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes
