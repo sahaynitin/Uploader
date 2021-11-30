@@ -30,9 +30,10 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 # https://stackoverflow.com/a/37631799/4723940
 from PIL import Image
+from database.adduser import AddUser
+from pyrogram import Client as Tellybots
 
-
-@pyrogram.Client.on_message(pyrogram.filters.command(["c2audio"]))
+@Tellybots.on_message(filters.command(["c2audio"]))
 async def convert_to_audio(bot, update):
     if (update.reply_to_message is not None) and (update.reply_to_message.media is not None) :
         download_location = Config.DOWNLOAD_LOCATION + "/"
