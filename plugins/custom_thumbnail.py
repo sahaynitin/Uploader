@@ -2,7 +2,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-from database.access import clinton
+from database.access import tellybots
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
