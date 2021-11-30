@@ -74,3 +74,5 @@ class Config(object):
     DB_URI = os.environ.get("DB_URL", "")
     DB_URL = os.environ.get("DB_URL", "")
     # Array to store users who are authorized to use the bot
+    # database uri (mongodb)
+    MONGODB_URL = os.environ.get("MONGODB_URL", "")
