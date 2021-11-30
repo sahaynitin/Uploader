@@ -26,11 +26,11 @@ async def start(client, message):
     bot_uptime = time.strftime("%Hh %Mm %Ss", time.gmtime(time.time() - bot_start_time)) 
     joinButton = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton(''🤖 Update Channel'', url=''https://telegram.me/tellybots_4u''),
-        InlineKeyboardButton(''💬 Support Group'', url=''https://telegram.me/tellybots_support'')
+        InlineKeyboardButton("Update Channel", url="https://telegram.me/tellybots_4u"),
+        InlineKeyboardButton("Support Group", url="https://telegram.me/tellybots_support")
         ],[
-        InlineKeyboardButton(''❔ Help'', callback_data=''help''),
-        InlineKeyboardButton(''⛔ Close'', callback_data=''close'')
+        InlineKeyboardButton("Help", callback_data="help"),
+        InlineKeyboardButton("Close", callback_data="close")
         ]]
     welcomed = f"Hey <b>{message.from_user.first_name}</b>\nThis is Multipurpose Bot that can perform many functions.\n\n/help for More info \n Bot Uptime : {bot_uptime}"
     await message.reply_text(welcomed, reply_markup=joinButton)
