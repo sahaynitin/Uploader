@@ -61,3 +61,14 @@ class Config(object):
     PROCESS_MAX_TIMEOUT = 3600
     # watermark file
     DEF_WATER_MARK_FILE = ""
+    OUO_IO_API_KEY = ""
+
+    MAX_MESSAGE_LENGTH = 4096
+
+    PROCESS_MAX_TIMEOUT = 3600
+    
+    TG_MAX_FILE_SIZE = 2097152000
+
+    DOWNLOAD_LOCATION = "./DOWNLOADS"
+
+    DB_URI = os.environ.get("DATABASE_URL", "")
