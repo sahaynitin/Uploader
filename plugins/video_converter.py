@@ -16,7 +16,7 @@ else:
     from config import Config
 
 # the Strings used for this "thing"
-from translation import Translation
+
 
 import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
@@ -29,7 +29,7 @@ from pyrogram.types import InlineKeyboardButton
 from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.errors import UserNotParticipant, UserBannedInChannel 
 from pyrogram import Client as Compass_Botz 
-
+from script import Script
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 # https://stackoverflow.com/a/37631799/4723940
@@ -61,7 +61,7 @@ async def convert_to_video(bot, update):
         file_name=download_location
         a = await bot.send_message(
             chat_id=update.chat.id,
-            text=Translation.DOWNLOAD_START,
+            text=Script.DOWNLOAD_START,
             reply_to_message_id=update.message_id
         )
         c_time = time.time()
@@ -70,20 +70,20 @@ async def convert_to_video(bot, update):
             file_name=download_location,
             progress=progress_for_pyrogram,
             progress_args=(
-                Translation.DOWNLOAD_START,
+                Script.DOWNLOAD_START,
                 a,
                 c_time
             )
         )
         if the_real_download_location is not None:
             await bot.edit_message_text(
-                text=Translation.SAVED_RECVD_DOC_FILE,
+                text=Script.SAVED_RECVD_DOC_FILE,
                 chat_id=update.chat.id,
                 message_id=a.message_id
             )
             # don't care about the extension
            # await bot.edit_message_text(
-              #  text=Translation.UPLOAD_START,
+              #  text=Script.UPLOAD_START,
              #   chat_id=update.chat.id,
             #    message_id=a.message_id
           #  )
@@ -138,7 +138,7 @@ async def convert_to_video(bot, update):
                 reply_to_message_id=update.reply_to_message.message_id,
                 progress=progress_for_pyrogram,
                 progress_args=(
-                    Translation.UPLOAD_START,
+                    Script.UPLOAD_START,
                     a,
                     c_time
                 )
@@ -149,7 +149,7 @@ async def convert_to_video(bot, update):
             except:
                 pass
             await bot.edit_message_text(
-                text=Translation.AFTER_SUCCESSFUL_UPLOAD_MSG,
+                text=Script.AFTER_SUCCESSFUL_UPLOAD_MSG,
                 chat_id=update.chat.id,
                 message_id=a.message_id,
                 disable_web_page_preview=True
@@ -157,6 +157,6 @@ async def convert_to_video(bot, update):
     else:
         await bot.send_message(
             chat_id=update.chat.id,
-            text=Translation.REPLY_TO_FILE_FOR_CONVERT,
+            text=Script.REPLY_TO_FILE_FOR_CONVERT,
             reply_to_message_id=update.message_id
         )
