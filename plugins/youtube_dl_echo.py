@@ -19,8 +19,8 @@ from database.adduser import AddUser
 from translation import Translation
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 from pyrogram import filters
-from pyrogram import Client as Clinton
-from database.access import clinton
+from pyrogram import Client as Tellybots
+from database.access import tellybots
 from helper_funcs.display_progress import humanbytes
 from helper_funcs.help_uploadbot import DownLoadFile
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes, TimeFormatter
