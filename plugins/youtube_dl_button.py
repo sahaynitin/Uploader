@@ -201,7 +201,7 @@ async def youtube_dl_call_back(bot, update):
                 text=Translation.RCHD_TG_API_LIMIT.format(time_taken_for_download, humanbytes(file_size)),
                 message_id=update.message.message_id
             )
-            else:
+        else:
             is_w_f = False
             images = await generate_screen_shots(
                 download_directory,
@@ -217,7 +217,7 @@ async def youtube_dl_call_back(bot, update):
                 chat_id=update.message.chat.id,
                 message_id=update.message.message_id
             )          
-            else:               
+        else:               
             start_time = time.time()
             # try to upload file
             if tg_send_type == "audio":
