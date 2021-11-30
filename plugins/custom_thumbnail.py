@@ -16,9 +16,9 @@ from translation import Translation
 from pyrogram import filters
 from pyrogram import Client as Compass_Botz
 
-import database.database as sql
+import database.data as sql
 from PIL import Image
-from database.database import *
+from database.data import *
 
 
 @Compass_Botz.on_message(filters.photo)
