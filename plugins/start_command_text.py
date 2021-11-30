@@ -1,6 +1,6 @@
 from pyrogram import Client, filters, StopPropagation
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-import time,from text import script
+import time,from text import Script
 bot_start_time = time.time()
 
 ''' def get_readable_time(seconds: int) -> str:
