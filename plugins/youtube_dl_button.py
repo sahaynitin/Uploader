@@ -216,45 +216,8 @@ async def youtube_dl_call_back(bot, update):
                 text=Translation.UPLOAD_START,
                 chat_id=update.message.chat.id,
                 message_id=update.message.message_id
-            )
-            # get the correct width, height, and duration for videos greater than 10MB
-            # ref: message from @BotSupport
-            width = 0
-            height = 0
-            duration = 0
-            if tg_send_type != "file":
-                metadata = extractMetadata(createParser(download_directory))
-                if metadata is not None:
-                    if metadata.has("duration"):
-                        duration = metadata.get('duration').seconds
-            # get the correct width, height, and duration for videos greater than 10MB
-            if os.path.exists(thumb_image_path):
-                width = 0
-                height = 0
-                metadata = extractMetadata(createParser(thumb_image_path))
-                if metadata.has("width"):
-                    width = metadata.get("width")
-                if metadata.has("height"):
-                    height = metadata.get("height")
-                if tg_send_type == "vm":
-                    height = width
-                # resize image
-                # ref: https://t.me/PyrogramChat/44663
-                # https://stackoverflow.com/a/21669827/4723940
-                Image.open(thumb_image_path).convert(
-                    "RGB").save(thumb_image_path)
-                img = Image.open(thumb_image_path)
-                # https://stackoverflow.com/a/37631799/4723940
-                # img.thumbnail((90, 90))
-                if tg_send_type == "file":
-                    img.resize((320, height))
-                else:
-                    img.resize((90, height))
-                img.save(thumb_image_path, "JPEG")
-                # https://pillow.readthedocs.io/en/3.1.x/reference/Image.html#create-thumbnails
-                
-            else:
-                thumb_image_path = None
+            )          
+            else:               
             start_time = time.time()
             # try to upload file
             if tg_send_type == "audio":
@@ -328,3 +291,49 @@ async def youtube_dl_call_back(bot, update):
                     )
                 )
             else:
+                logger.info("Did this happen? :\\")
+            end_two = datetime.now()
+            time_taken_for_upload = (end_two - end_one).seconds
+            #
+            media_album_p = []
+            if images is not None:
+                i = 0
+                caption = "© @All_Movie_Rockers"
+                if is_w_f:
+                    caption = "/upgrade to Plan D to remove the watermark\n© @All_Movie_Rockers"
+                for image in images:
+                    if os.path.exists(str(image)):
+                        if i == 0:
+                            media_album_p.append(
+                                InputMediaPhoto(
+                                    media=image,
+                                    caption=caption,
+                                    parse_mode="html"
+                                )
+                            )
+                        else:
+                            media_album_p.append(
+                                InputMediaPhoto(
+                                    media=image
+                                )
+                            )
+                        i = i + 1
+            await bot.send_media_group(
+                chat_id=update.message.chat.id,
+                disable_notification=True,
+                reply_to_message_id=update.message.message_id,
+                media=media_album_p
+            )
+            #
+            try:
+                shutil.rmtree(tmp_directory_for_each_user)
+                os.remove(thumb_image_path)
+            except:
+                pass
+            await bot.edit_message_text(
+                text=Translation.AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS.format(time_taken_for_download, time_taken_for_upload),
+                chat_id=update.message.chat.id,
+                message_id=update.message.message_id,
+                disable_web_page_preview=True
+            )
+
