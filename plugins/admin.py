@@ -4,16 +4,15 @@
 import traceback
 import os
 
-from pyrogram import Client as Clinton
+from pyrogram import Client as Tellybots
 from pyrogram import filters
 
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
 else:
     from config import Config
-from database.access import clinton
-
-@Clinton.on_message(filters.private & filters.command('total'))
+from database.access import tel'total'
+@Tellybots.on_message(filters.private & filters.command('stats'))
 async def sts(c, m):
     if m.from_user.id != Config.OWNER_ID:
         return 
