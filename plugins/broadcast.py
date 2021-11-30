@@ -2,9 +2,9 @@
 # (c) @AbirHasan2005 | X-Noid
 
 import traceback, datetime, asyncio, string, random, time, os, aiofiles, aiofiles.os
-from database.access import clinton
+from database.access import tellybots
 from pyrogram import filters
-from pyrogram import Client as Clinton
+from pyrogram import Client as Tellybots
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
 
@@ -32,7 +32,7 @@ async def send_msg(user_id, message):
         return 500, f"{user_id} : {traceback.format_exc()}\n"
         
 
-@Clinton.on_message(filters.private & filters.command('broadcast') & filters.reply)
+@Tellybots.on_message(filters.private & filters.command('broadcast') & filters.reply)
 async def broadcast_(c, m):
     if m.from_user.id != Config.OWNER_ID:
         return
