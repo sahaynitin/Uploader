@@ -31,7 +31,7 @@ from database.adduser import AddUser
 from pyrogram import Client as Tellybots
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-@Tellybots.on_message(pyrogram.filters.command(["uptsh"]))
+@Tellybots.on_message(filters.command(["uptsh"]))
 async def get_link(bot, update):
     await AddUser(bot, update)
     logger.info(update.from_user)
