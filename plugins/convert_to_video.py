@@ -22,7 +22,8 @@ from translation import Translation
 
 import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
-
+from database.adduser import AddUser
+from pyrogram import Client as Tellybots
 from helper_funcs.display_progress import progress_for_pyrogram
 from helper_funcs.ran_text import ran
 
@@ -32,7 +33,7 @@ from hachoir.parser import createParser
 from PIL import Image
 
 
-@pyrogram.Client.on_message(pyrogram.filters.command(["c2video"]))
+@Tellybots.on_message(filters.command(["c2video"]))
 async def convert_to_video(bot, update):
     await AddUser(bot, update)
     if update.reply_to_message is not None:
