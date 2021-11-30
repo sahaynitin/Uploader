@@ -21,9 +21,9 @@ else:
 # the Strings used for this "thing"
 from translation import Translation
 
-import pyrogram
-logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
+logging.getLogger("pyrogram").setLevel(logging.WARNING)
+from pyrogram import filters
 from helper_funcs.help_Nekmo_ffmpeg import generate_screen_shots
 from helper_funcs.display_progress import progress_for_pyrogram
 from database.adduser import AddUser
