@@ -7,6 +7,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+from helper_funcs.help_Nekmo_ffmpeg import take_screen_shot
 
 import os
 import time
