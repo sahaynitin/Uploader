@@ -71,4 +71,6 @@ class Config(object):
 
     DOWNLOAD_LOCATION = "./DOWNLOADS"
 
-    DB_URI = os.environ.get("DATABASE_URL", "")
+    DB_URI = os.environ.get("DB_URL", "")
+    DB_URL = os.environ.get("DATABASE_URL", "")
+    # Array to store users who are authorized to use the bot
