@@ -1,11 +1,5 @@
 class Translation(object):
-    START_TEXT = """<b>Hey <b>{message.from_user.first_name}</b>\n
-I am Fastest Anydl_X Bot
-
-Use Help Command To Know How To Use Me.
-
-Made With 💕 By @Tellybots_4u
-"""
+    
     IFLONG_FILE_NAME = " Only 64 characters can be named . "
     RENAME_403_ERR = "Sorry. You are not permitted to rename this file."
     ABS_TEXT = " Please don't be selfish."
