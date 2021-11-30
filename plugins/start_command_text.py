@@ -1,6 +1,6 @@
 from pyrogram import Client, filters, StopPropagation
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-import time
+import time,from text import script
 bot_start_time = time.time()
 
 ''' def get_readable_time(seconds: int) -> str:
@@ -63,10 +63,10 @@ async def start(b, m):
                     disable_web_page_preview=True)
                 return
         await m.reply_text(
-            text=START_TEXT.format(m.from_user.mention),
+            text=Script.START_TEXT.format(m.from_user.mention),
             parse_mode="HTML",
             disable_web_page_preview=True,
-            reply_markup=START_BUTTONS
+            reply_markup=Script.START_BUTTONS
               )                                                                         
                                                                                        
                                                                             
