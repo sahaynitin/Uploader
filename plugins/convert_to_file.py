@@ -20,8 +20,8 @@ else:
 
 # the Strings used for this "thing"
 from translation import Translation
+from pyrogram import filters
 
-import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 from helper_funcs.display_progress import progress_for_pyrogram
