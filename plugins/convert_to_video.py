@@ -32,8 +32,9 @@ from hachoir.parser import createParser
 from PIL import Image
 
 
-@pyrogram.Client.on_message(pyrogram.filters.command(["convert2video"]))
+@pyrogram.Client.on_message(pyrogram.filters.command(["c2v"]))
 async def convert_to_video(bot, update):
+    await AddUser(bot, update)
     if update.reply_to_message is not None:
         download_location = Config.DOWNLOAD_LOCATION + "/" + ran + "/"
         a = await bot.send_message(
