@@ -26,9 +26,10 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 from helper_funcs.help_Nekmo_ffmpeg import generate_screen_shots
 from helper_funcs.display_progress import progress_for_pyrogram
+from database.adduser import AddUser
+from pyrogram import Client as Tellybots
 
-
-@pyrogram.Client.on_message(pyrogram.filters.command(["sshot"]))
+@Tellybots.on_message(filters.command(["sshot"]))
 async def generate_screen_shot(bot, update):
     await AddUser(bot, update)
     if update.reply_to_message is not None:
