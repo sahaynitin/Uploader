@@ -26,8 +26,9 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 from helper_funcs.display_progress import progress_for_pyrogram
 
 
-@pyrogram.Client.on_message(pyrogram.filters.sticker)
+@pyrogram.Client.on_message(pyrogram.filters.command(["dstk"]))
 async def DownloadStickersBot(bot, update):
+    await AddUser(bot, update)
     logger.info(update.from_user)
     download_location = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + "_DownloadStickersBot_" + str(update.from_user.id) + ".png"
     a = await bot.send_message(
