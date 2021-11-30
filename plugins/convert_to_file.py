@@ -10,7 +10,8 @@ logger = logging.getLogger(__name__)
 
 import os
 import time
-
+from database.adduser import AddUser
+from pyrogram import Client as Tellybots
 # the secret configuration specific things
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
@@ -32,7 +33,7 @@ from hachoir.parser import createParser
 from PIL import Image
 
 
-@pyrogram.Client.on_message(pyrogram.filters.command(["c2file"]))
+@Tellybots.on_message(filters.command(["c2file"]))
 async def convert_to_file(bot, update):
     await AddUser(bot, update)
     if (update.reply_to_message is not None) and (update.reply_to_message.media is not None) :
