@@ -31,7 +31,7 @@ from helper_funcs.ran_text import ran
 
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 @pyrogram.Client.on_message(pyrogram.filters.command(["uptogofile"]))
-async def generate_custom_thumbnail(bot, update):
+async def get_link(bot, update):
     if update.from_user.id in Config.BANNED_USERS:
         await bot.delete_messages(
             chat_id=update.chat.id,
