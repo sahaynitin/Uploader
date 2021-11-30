@@ -11,7 +11,7 @@ from helper_funcs.help_Nekmo_ffmpeg import take_screen_shot
 
 import os
 import time
-
+import random
 # the secret configuration specific things
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
