@@ -85,10 +85,10 @@ async def delete_thumbnail(bot, update):
         text=Translation.DEL_ETED_CUSTOM_THUMB_NAIL,
         reply_to_message_id=update.message_id
     )
-@Clinton.on_message(filters.private & filters.command("viewthumbnail") )
+@Compass_Botz.on_message(filters.private & filters.command("viewthumbnail") )
 async def viewthumbnail(bot, update):
     await AddUser(bot, update)
-    thumbnail = await clinton.get_thumbnail(update.from_user.id)
+    thumbnail = await tellybots.get_thumbnail(update.from_user.id)
     if thumbnail is not None:
         await bot.send_photo(
         chat_id=update.chat.id,
@@ -100,7 +100,7 @@ async def viewthumbnail(bot, update):
 
 async def Gthumb01(bot, update):
     thumb_image_path = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + ".jpg"
-    db_thumbnail = await clinton.get_thumbnail(update.from_user.id)
+    db_thumbnail = await tellybots.get_thumbnail(update.from_user.id)
     if db_thumbnail is not None:
         thumbnail = await bot.download_media(message=db_thumbnail, file_name=thumb_image_path)
         Image.open(thumbnail).convert("RGB").save(thumbnail)
