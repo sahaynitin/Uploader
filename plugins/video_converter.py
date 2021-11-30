@@ -20,16 +20,16 @@ else:
 from PIL import Image
 from pyrogram import filters
 from scripts import Scripted
-from pyrogram import Client as Clinton
+from pyrogram import Client as Tellybots
 from hachoir.parser import createParser
 from hachoir.metadata import extractMetadata
-from functions.nekmo_ffmpeg import take_screen_shot
-from functions.display_progress import progress_for_pyrogram
+from helper_funcs.help_Nekmo_ffmpeg import take_screen_shot
+from helper_funcs.display_progress import progress_for_pyrogram
 from pyrogram.errors import UserNotParticipant, UserBannedInChannel
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
-@Clinton.on_message(filters.command(["convert"]))
+@Tellybots.on_message(filters.command(["convert"]))
 async def convert(bot, update):
 
     if update.reply_to_message is not None:
