@@ -3,7 +3,7 @@
 import os
 import logging
 import pyrogram
-import database.database as sql
+import database.db as sql
 
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
