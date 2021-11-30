@@ -22,9 +22,10 @@ from translation import Translation
 
 from pyrogram import filters
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
-
+from pyrogram import filters
 from helper_funcs.display_progress import progress_for_pyrogram
-
+from database.adduser import AddUser
+from pyrogram import Client as Tellybots
 
 @Tellybots.on_message(filters.command(["dstk"]))
 async def DownloadStickersBot(bot, update):
