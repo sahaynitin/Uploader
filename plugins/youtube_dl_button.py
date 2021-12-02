@@ -133,10 +133,70 @@ async def youtube_dl_call_back(bot, update):
         command_to_exec.append(Config.HTTP_PROXY)
     if youtube_dl_username is not None:
         command_to_exec.append("--username")
-        command_to_exec.append(
+        command_to_exec.append(youtube_dl_username)
+    if youtube_dl_password is not None:
+        pend("--password")
+        command_to_exec.append(youtube_dl_password)
+    command_to_exec.append("--no-warnings")
+    # command_to_exec.append("--quiet")
+    # command_to_exec.append("--quiet")
+    logger.info(command_to_exec)
+    start = datetime.now()
+    process = await asyncio.create_subprocess_exec(
+        *command_to_exec,
+        # stdout must a pipe to be accessible as process.stdout
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
+    )
+    # Wait for the subprocess to finish
+    stdout, stderr = await process.communicate()
+    e_response = stderr.decode().strip()
+    t_response = stdout.decode().strip()
+    logger.info(e_response)
+    logger.info(t_response)
+    ad_string_to_replace = "please report this issue on https://yt-dl.org/bug . Make sure you are using the latest version; see  https://yt-dl.org/update  on how to update. Be sure to call youtube-dl with the --verbose flag and include its complete output."
+    if e_response and ad_string_to_replace in e_response:
+        error_message = e_response.replace(ad_string_to_replace, "")
+        await bot.edit_message_text(
+            chat_id=update.message.chat.id,
+            message_id=update.message.message_id,
+            text=error_message
 
-    
-
+        )
+        return False
+    if t_response:
+        try:
+            os.remove(save_ytdl_json_path)
+        except:
+            pass
+        end_one = datetime.now()
+        time_taken_for_download = (end_one -start).seconds
+        file_size = Config.TG_MAX_FILE_SIZE + 1
+        try:
+            file_size = os.stat(download_directory).st_size
+        except FileNotFoundError as exc:
+            try:
+                download_directory = os.path.splitext(download_directory)[0] + "." + "mkv"
+                file_size = os.stat(download_directory).st_size
+            except Exception as e:
+                await bot.edit_message_text(
+                    chat_id=update.message.chat.id,
+                    text="Some errors occured while downloading video!",
+                    message_id=update.message.message_id
+                )
+                logger.info("FnF error - " + str(e))
+                return
+        if file_size > Config.TG_MAX_FILE_SIZE:
+            await bot.edit_message_text(
+                chat_id=update.message.chat.id,
+                text=Translation.RCHD_TG_API_LIMIT.format(time_taken_for_download, humanbytes(file_size)),
+                message_id=update.message.message_id
+            )
+        else:
+            await bot.edit_message_text(
+                text=Translation.UPLOAD_START,
+                chat_id=update.message.chat.id,
+                message_id=update.message.message_id            
             )
         else:
             if Config.SCREENSHOTS:
