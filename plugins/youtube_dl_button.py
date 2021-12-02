@@ -200,8 +200,7 @@ async def youtube_dl_call_back(bot, update):
             )
         try:
                 await bot.edit_message_text(text=Translation.UPLOAD_START, chat_id=update.message.chat.id, message_id=update.message.message_id     
-            # get the correct width, height, and duration for videos greater than 10MB     
-            if tg_send_type != "file":
+            # get the correct width, height, and duration for videos greater than 10MB  
                 metadata = extractMetadata(createParser(download_directory))
                 if metadata is not None:
                     if metadata.has("duration"):
