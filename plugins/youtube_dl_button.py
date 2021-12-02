@@ -14,7 +14,7 @@ import os
 import shutil
 import time
 from datetime import datetime
-from custom_thumbnail import duration
+from plugins.custom_thumbnail import duration
 # the secret configuration specific things
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
