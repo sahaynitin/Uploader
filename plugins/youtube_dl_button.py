@@ -14,7 +14,7 @@ import os
 import shutil
 import time
 from datetime import datetime
-import width
+
 # the secret configuration specific things
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
@@ -268,7 +268,7 @@ async def youtube_dl_call_back(bot, update):
                     caption=description,
                     parse_mode="HTML",
                     duration=duration,
-                    width=width,
+                    length=width,
                     height=height,
                     supports_streaming=True,
                     # reply_markup=reply_markup,
