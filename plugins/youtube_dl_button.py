@@ -200,36 +200,12 @@ async def youtube_dl_call_back(bot, update):
             )
         try:
                 await bot.edit_message_text(text=Translation.UPLOAD_START, chat_id=update.message.chat.id, message_id=update.message.message_id     
-            # get the correct width, height, and duration for videos greater than 10MB
-            width = 0
-            height = 0
-            duration = 0
+            # get the correct width, height, and duration for videos greater than 10MB     
             if tg_send_type != "file":
                 metadata = extractMetadata(createParser(download_directory))
                 if metadata is not None:
                     if metadata.has("duration"):
                         duration = metadata.get('duration').seconds
-
-            if os.path.exists(thumb_image_path):
-                width = 0
-                height = 0
-                metadata = extractMetadata(createParser(thumb_image_path))
-                if metadata.has("width"):
-                    width = metadata.get("width")
-                if metadata.has("height"):
-                    height = metadata.get("height")
-                if tg_send_type == "vm":
-                    height = width
-                Image.open(thumb_image_path).convert(
-                    "RGB").save(thumb_image_path)
-                img = Image.open(thumb_image_path)
-                if tg_send_type == "file":
-                    img.resize((320, height))
-                else:
-                    img.resize((90, height))
-                img.save(thumb_image_path, "JPEG")
-            else:
-                thumb_image_path = None
 
             start_time = time.time()
             if tg_send_type == "audio":
