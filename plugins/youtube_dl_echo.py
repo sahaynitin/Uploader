@@ -34,7 +34,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import UserNotParticipant, UserBannedInChannel
 
 @pyrogram.Client.on_message(pyrogram.filters.regex(pattern=".*http.*"))
-async def echo(bot, update)
+async def echo(bot, update):
     logger.info(update.from_user)
     url = update.text
     youtube_dl_username = None
