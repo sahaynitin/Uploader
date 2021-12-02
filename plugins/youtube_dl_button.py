@@ -22,7 +22,7 @@ else:
     from config import Config
 # the Strings used for this "thing"
 from translation import Translation
-from plugins.thumbnail import *
+from plugins.custom_thumbnail import *
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 from pyrogram.types import InputMediaPhoto
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes
@@ -209,7 +209,7 @@ async def youtube_dl_call_back(bot, update):
             start_time = time.time()
             # try to upload file
             if tg_send_type == "audio":
-                duration = await Mdata03(download_directory)
+                duration = await bot.send_message(download_directory)
                 thumbnail = await Gthumb01(bot, update)
                 await bot.send_audio(
                     chat_id=update.message.chat.id,
@@ -227,7 +227,7 @@ async def youtube_dl_call_back(bot, update):
                     )
                 )
             elif tg_send_type == "file":
-                thumbnail = await Gthumb01(bot, update)
+                thumbnail = await bot.send_photo(bot, update)
                 await bot.send_document(
                     chat_id=update.message.chat.id,
                     document=download_directory,
@@ -243,8 +243,8 @@ async def youtube_dl_call_back(bot, update):
                     )
                 )
             elif tg_send_type == "vm":
-                width, duration = await Mdata02(download_directory)
-                thumbnail = await Gthumb02(bot, update, duration, download_directory)
+                width, duration = await bot.send_message(download_directory)
+                thumbnail = await bot.send_photo(bot, update, duration, download_directory)
                 await bot.send_video_note(
                     chat_id=update.message.chat.id,
                     video_note=download_directory,
@@ -261,7 +261,7 @@ async def youtube_dl_call_back(bot, update):
                 )
             elif tg_send_type == "video":
                  width, height, duration = await Mdata01(download_directory)
-                 thumbnail = await Gthumb02(bot, update, duration, download_directory)
+                 thumbnail = await bot.send_message(bot, update, duration, download_directory)
                  await bot.send_video(
                     chat_id=update.message.chat.id,
                     video=download_directory,
