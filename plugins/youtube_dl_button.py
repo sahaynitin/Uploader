@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # (c) Shrimadhav U K | Modified By > @DC4_WARRIOR
-
+import duration
 # the logging things
 import logging
 logging.basicConfig(level=logging.DEBUG,
