@@ -14,7 +14,7 @@ import os
 import shutil
 import time
 from datetime import datetime
-
+import width
 # the secret configuration specific things
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
@@ -23,7 +23,7 @@ else:
 
 # the Strings used for this "thing"
 from translation import Translation
-
+import height
 import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
