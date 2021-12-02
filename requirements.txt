@@ -20,3 +20,4 @@ feedparser
 psycopg2-binary
 sqlalchemy==1.3.23
 ffmpeg
+duration
