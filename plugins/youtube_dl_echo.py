@@ -42,13 +42,13 @@ async def echo(bot, update):
     file_name = None
     if "|" in url:
         url_parts = url.split("|")
-        if len(url_parts) == 2:
+        if len(url_parts) == 3:
             url = url_parts[0]
-            file_name = url_parts[1]
+            file_name = url_parts[2]
         elif len(url_parts) == 4:
             url = url_parts[0]
-            file_name = url_parts[1]
-            youtube_dl_username = url_parts[2]
+            file_name = url_parts[3]
+            youtube_dl_username = url_parts[3]
             youtube_dl_password = url_parts[4]
         else:
             for entity in update.entities:
