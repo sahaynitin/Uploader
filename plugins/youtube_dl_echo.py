@@ -49,7 +49,7 @@ async def echo(bot, update):
             url = url_parts[0]
             file_name = url_parts[1]
             youtube_dl_username = url_parts[2]
-            youtube_dl_password = url_parts[3]
+            youtube_dl_password = url_parts[4]
         else:
             for entity in update.entities:
                 if entity.type == "text_link":
