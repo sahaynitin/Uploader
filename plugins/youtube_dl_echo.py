@@ -31,7 +31,7 @@ from helper_funcs.help_uploadbot import DownLoadFile
 from helper_funcs.ran_text import random_char
 
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from pyrogram.errors import UserNotParticipant, UserBannedInChanne
+from pyrogram.errors import UserNotParticipant, UserBannedInChannel
 @pyrogram.Client.on_message(pyrogram.filters.regex(pattern=".*http.*"))
 async def echo(bot, update):
     logger.info(update.from_user)
